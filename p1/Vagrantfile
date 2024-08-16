@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "1024"
       vb.cpus = 1
     end
-    mpouceS.vm.provision "shell", path: "script.sh"
+    mpouceS.vm.provision "shell", path: "scripts/master.sh"
   end
   config.vm.define "mpouceSW" do |mpouceSW|
     mpouceSW.vm.hostname = "mpouceSW"
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "1024"
       vb.cpus = 1
     end
-    mpouceSW.vm.provision "shell", path: "script.sh"
+    mpouceSW.vm.provision "shell", path: "scripts/agent.sh"
   end
 
   # Share an additional folder to the guest VM. The first argument is
