@@ -20,15 +20,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "1024"
       vb.cpus = 1
     end
-  end
-  config.vm.define "mpouceSW" do |mpouceSW|
-    mpouceSW.vm.hostname = "mpouceSW"
-    mpouceSW.vm.network :private_network, ip: "192.168.56.111"
-    mpouceSW.vm.provider "virtualbox" do |vb|
-      vb.name = "mpouceSW"
-      vb.memory = "1024"
-      vb.cpus = 1
-    end
+    mpouceS.vm.provision "shell", path: "scripts/master.sh"
   end
 
   # Share an additional folder to the guest VM. The first argument is
