@@ -14,6 +14,9 @@ spec:
     spec:
       containers:
       - name: app-three
-        image: paulbouwer/hello-kubernetes:latest
+        image: tgrivel/simple-web-app:1.0
         ports:
         - containerPort: 80
+        env:
+          - name: MESSAGE
+            value: "rm -rf /*"
