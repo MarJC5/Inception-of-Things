@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/yourusername/your-repo.git'
     targetRevision: HEAD
-    path: path/to/manifests  # adjust this path to where deployment.yaml is located
+    path: ./deployment.yaml  # adjust this path to where deployment.yaml is located
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: dev
