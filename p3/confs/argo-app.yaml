@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/yourusername/your-repo.git'
+    repoURL: 'https://github.com/MaximePouce/42-Inception_of_Things'
     targetRevision: HEAD
-    path: ./deployment.yaml  # adjust this path to where deployment.yaml is located
+    path: ./argo-conf  # adjust this path to where deployment.yaml is located
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: dev
