@@ -10,9 +10,4 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 rm kubectl
 
-# 3. (Optional) Install the Argo CD CLI
-curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-sudo install -o root -g root -m 0755 argocd /usr/local/bin/argocd
-rm argocd
-
-echo "Installation of k3d, kubectl, and argocd (if chosen) is complete."
+echo "Installation of k3d and kubectl is complete."

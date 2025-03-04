@@ -55,4 +55,4 @@ echo "Testing Docker installation by running hello-world container..."
 sudo docker run hello-world
 
 echo -e "\nDocker installation completed successfully!"
-echo "Please log out and log back in or reboot for the group changes to take effect."
+echo "Please reboot for the group changes to take effect."
