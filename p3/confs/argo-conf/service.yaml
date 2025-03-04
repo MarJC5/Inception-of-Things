@@ -4,10 +4,11 @@ metadata:
   name: playground-service
   namespace: dev
 spec:
-  selector:
-    app: playground
+  type: NodePort
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8888
-  type: LoadBalancer
+      nodePort: 30888
+  selector:
+    app: playground
