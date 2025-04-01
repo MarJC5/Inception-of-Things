@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# Only run in sudo mode
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script with sudo"
+    exit 1
+fi
+
 # Create k3d cluster and setup namespace
 k3d cluster create inception --servers 1 --agents 1
 kubectl create namespace argocd
@@ -7,6 +14,8 @@ kubectl create namespace dev
 # Install Argo-CD on namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 # Wait for pods to be running : kubectl get pods -n argocd -w
+echo "Waiting for Argo-CD pods to be running..."
+sleep 60
 # Apply the argocd configuration
 # Remember to change it according to your needs
 kubectl apply -n argocd -f ./confs/argo-app.yaml
