@@ -11,6 +11,6 @@ sleep 35
 sudo k3s kubectl get node
 
 # Output the k3s token to a file so the agent node can use it to join
-sudo cat /var/lib/rancher/k3s/server/node-token > /vagrant/k3s_token
+sudo cat /var/lib/rancher/k3s/server/node-token > /vagrant/confs/k3s_token
 
 echo "k3s server installation completed."
