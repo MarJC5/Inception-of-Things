@@ -6,6 +6,11 @@ while [ ! -f /vagrant/confs/k3s_token ]; do
     sleep 5
 done
 
+while [ ! curl --insecure --output /dev/null --silent --head --fail https://192.168.56.110:6443 ]; do
+  echo "Waiting for k3s server API to be reachable..."
+  sleep 5
+done
+
 # Read the token from the file
 K3S_TOKEN=$(cat /vagrant/confs/k3s_token)
 
