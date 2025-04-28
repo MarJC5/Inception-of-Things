@@ -25,7 +25,8 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 # Test the access :
-# Find the pod name
-# kubectl get pods -n dev
-# kubectl exec <pod-name> -n dev -- wget -qO - localhost:8888
+# Start a port-forwarding on the dev namespace
+# sudo kubectl port-forward svc/playground-service -n dev 8888:80
+# curl on localhost
+# curl http://localhost:8888
 # Should show : {"status":"ok", "message": "v1"}
