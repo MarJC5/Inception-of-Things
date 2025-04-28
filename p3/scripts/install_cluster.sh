@@ -7,22 +7,22 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Create k3d cluster and setup namespace
-k3d cluster create inception --servers 1 --agents 1
-kubectl create namespace argocd
-kubectl create namespace dev
+sudo k3d cluster create inception --servers 1 --agents 1
+sudo kubectl create namespace argocd
+sudo kubectl create namespace dev
 
 # Install Argo-CD on namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+sudo kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 # Wait for pods to be running : kubectl get pods -n argocd -w
 echo "Waiting for Argo-CD pods to be running..."
 sleep 60
 # Apply the argocd configuration
 # Remember to change it according to your needs
-kubectl apply -n argocd -f ./confs/argo-app.yaml
+sudo kubectl apply -n argocd -f ./confs/argo-app.yaml
 # Once running, get the argocd password
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 # Copy the password, you will need to use it to log in as admin
-kubectl port-forward svc/argocd-server -n argocd 8080:443
+sudo kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 # Test the access :
 # Start a port-forwarding on the dev namespace
