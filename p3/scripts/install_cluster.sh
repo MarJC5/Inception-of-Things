@@ -24,7 +24,7 @@ sudo kubectl apply -n argocd -f ./confs/argo-app.yaml
 echo "Argo-CD default admin secret: "
 sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 # Copy the password, you will need to use it to log in as admin
-echo "\n"
+echo -n ""
 sudo kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 # Test the access :

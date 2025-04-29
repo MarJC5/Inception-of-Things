@@ -1,12 +1,13 @@
 #!/bin/bash
 
+export INSTALL_K3S_EXEC="--node-ip 192.168.56.111"
 # Ensure the token file exists (waiting for the server to generate it)
 while [ ! -f /vagrant/confs/k3s_token ]; do
     echo "Waiting for k3s token..."
     sleep 5
 done
 
-while [ ! curl --insecure --output /dev/null --silent --head --fail https://192.168.56.110:6443 ]; do
+while [ ! curl --output /dev/null --silent --head --fail https://192.168.56.110:6443 ]; do
   echo "Waiting for k3s server API to be reachable..."
   sleep 5
 done
