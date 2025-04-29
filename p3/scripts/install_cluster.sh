@@ -15,13 +15,16 @@ sudo kubectl create namespace dev
 sudo kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 # Wait for pods to be running : kubectl get pods -n argocd -w
 echo "Waiting for Argo-CD pods to be running..."
-sleep 60
+sudo kubectl wait pod --all --for=condition=Ready --namespace=argocd --timeout=600s
+echo "All the pods are Ready."
 # Apply the argocd configuration
 # Remember to change it according to your needs
 sudo kubectl apply -n argocd -f ./confs/argo-app.yaml
 # Once running, get the argocd password
+echo "Argo-CD default admin secret: "
 sudo kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 # Copy the password, you will need to use it to log in as admin
+echo "\n"
 sudo kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 # Test the access :
